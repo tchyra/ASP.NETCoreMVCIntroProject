@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home page";
+    ViewBag.Title = "Home page";
+}
+
+<div class="text-center">
+    
+    @if (TempData.ContainsKey("Message"))
+    {
+        <p>
+            <i>Temp message: @TempData["Message"]</i>
+        </p>
+    }
+
+    <h1 class="display-4">Welcome</h1>
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <p>
+        @* we need to specify the controller here, because we are linking to a different controller. *@
+        <a asp-controller="People" asp-action="Index">View a list of people</a>
+    </p>
+</div>

@@ -1,0 +1,36 @@
+﻿@model Person;
+
+@{
+    // put a value in ViewBag that the Layout will get
+    ViewBag.Title = "People list";
+}
+
+@* since we haven't specified any link, this form will post to the same path as the page it is on *@
+<form method="post" class="text-center">
+
+    <h1 class="display-4">All people</h1>
+
+    @* simple UI to enter data, I didn't look up how to make proper bootstrap inputs *@
+
+    <p>
+        <label>First name</label><br />
+        <input type="text" name="firstName"/>
+    </p>
+
+    <p>
+        <label>Last name</label><br />
+        <input type="text" name="lastName"/>
+    </p>
+
+    <p>
+        <label>Date of birth</label><br />
+        <input type="date" name="dateOfBirth" />
+    </p>
+
+    <p>
+        <button type="submit" class="btn">
+            Create person
+        </button>
+    </p>
+
+</form>

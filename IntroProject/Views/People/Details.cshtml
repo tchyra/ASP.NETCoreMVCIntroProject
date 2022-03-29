@@ -1,0 +1,23 @@
+﻿@model Person;
+
+@{
+    ViewBag.Title = "Person details";
+}
+
+<div class="text-center">
+
+    @if (TempData.ContainsKey("Message"))
+    {
+        <p>
+            <i>Temp message: @TempData["Message"]</i>
+        </p>
+    }
+
+    <h1 class="display-4">Person details</h1>
+
+    <p>First name: <b>@Model.FirstName</b></p>
+    <p>Last name: <b>@Model.LastName</b></p>
+    <p>Date of birth: <b>@Model.DateOfBirth.ToString("yyyy-MM-dd")</b></p>
+    <p>Date of death: <b>@(Model.DateOfDeath?.ToString("yyyy-MM-dd") ?? "This person is alive")</b></p>
+
+</div>

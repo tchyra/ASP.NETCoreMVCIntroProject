@@ -1,0 +1,64 @@
+﻿@*
+    instead of adding this using here,
+    we could put it in /Views/_ViewImports.cshtml
+    and it would work for all views
+*@
+@using IntroProject.Models;
+
+@* declare that this page will use an array of people as its model *@
+@model Person[];
+
+@{
+    // put a value in ViewBag that the Layout will get
+    ViewBag.Title = "People list";
+}
+
+@* declare a section to add some custom styles for this page only *@
+@section Stylesheets {
+    @* if this was an actual app, we'd load a stylesheet instead *@
+    @*<link rel="stylesheet" href="~/css/people/index.css" />*@
+    <style>
+    </style>
+}
+
+@* main content for the page *@
+<div class="text-center">
+
+    @if (TempData.ContainsKey("Message"))
+    {
+        <p>
+            <i>Temp message: @TempData["Message"]</i>
+        </p>
+    }
+
+    <h1 class="display-4">All people</h1>
+
+    <p>
+        <a asp-action="Create">Add a person</a>
+    </p>
+
+    <p>
+        <ul>
+            @foreach (var person in Model)
+            {
+                <li>
+                    @* we don't need to use asp-controller because this view is under PeopleController *@
+                    <a asp-action="Details"
+                       asp-route-personId="@person.Id">
+                        @person.FirstName @person.LastName
+                    </a>
+
+                    @* an alternative way to generate a link for the user to click *@
+                    @*<a href="@Url.Action("Details", new { personId = person.Id })">
+                            @person.FirstName @person.LastName
+                        </a>*@
+
+                    @* and another way to generate the entire <a> tag *@
+                    @*@Html.ActionLink(person.FirstName + " " + person.LastName, "Details", new { personId = person.Id })*@
+
+                </li>
+            }
+        </ul>
+    </p>
+
+</div>
